@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="news_image">News Image</string>
+    <string name="news_source">News Source</string>
+    <string name="news_title">News Title</string>
+    <string name="news_description">News Description</string>
+</resources>
