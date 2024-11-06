@@ -51,6 +51,12 @@ android {
         buildConfig = true
     }
     dynamicFeatures += listOf(":favorite")
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 hilt {

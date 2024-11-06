@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class NewsRepositoryImpl @Inject constructor(
     private val newsRemoteDataSource: NewsRemoteDataSource,
-    private val newsDao: NewsDao
+    private val newsDao: NewsDao,
 ) : com.chaidar.dicoding.core.domain.repository.NewsRepository {
 
     override fun getNewsList(
