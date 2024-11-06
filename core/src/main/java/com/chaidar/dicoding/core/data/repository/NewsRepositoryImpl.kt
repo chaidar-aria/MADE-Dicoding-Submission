@@ -1,5 +1,6 @@
 package com.chaidar.dicoding.core.data.repository
 
+import android.util.Log
 import com.chaidar.dicoding.core.data.mapper.ArticleMapper
 import com.chaidar.dicoding.core.data.source.local.NewsDao
 import com.chaidar.dicoding.core.data.source.remote.NewsRemoteDataSource
@@ -13,13 +14,18 @@ class NewsRepositoryImpl @Inject constructor(
     private val newsDao: NewsDao
 ) : com.chaidar.dicoding.core.domain.repository.NewsRepository {
 
-    override fun getNewsList(query: String, apiKey: String): Flow<List<com.chaidar.dicoding.core.domain.model.Article>> = flow {
+    override fun getNewsList(
+        query: String,
+        apiKey: String
+    ): Flow<List<com.chaidar.dicoding.core.domain.model.Article>> = flow {
         val response = newsRemoteDataSource.fetchNews(query, apiKey)
         if (response.isSuccess) {
+            Log.d("NewsRepositoryImpl", "Response: ${response.getOrNull()}")
             response.getOrNull()?.articles?.let { articles ->
                 emit(articles.map { ArticleMapper.mapToDomain(it) })
             }
         } else {
+            Log.e("NewsRepositoryImpl", "Error fetching news: ${response.exceptionOrNull()}")
             throw response.exceptionOrNull() ?: Exception("Unknown error")
         }
     }

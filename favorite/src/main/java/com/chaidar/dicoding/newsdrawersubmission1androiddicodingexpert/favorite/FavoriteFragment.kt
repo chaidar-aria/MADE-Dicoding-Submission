@@ -8,13 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chaidar.dicoding.core.domain.model.Article
-import com.chaidar.dicoding.newsdrawersubmission1androiddicodingexpert.presentation.adapter.NewsAdapter
-import com.chaidar.dicoding.newsdrawersubmission1androiddicodingexpert.R
 import com.chaidar.dicoding.favorite.databinding.FragmentFavoriteBinding
 import com.chaidar.dicoding.newsdrawersubmission1androiddicodingexpert.favorite.di.DaggerFavoriteComponent
+import com.chaidar.dicoding.newsdrawersubmission1androiddicodingexpert.presentation.adapter.NewsAdapter
 import com.chaidar.dicoding.newsdrawersubmission1androiddicodingexpert.presentation.di.AppModule
 import com.chaidar.dicoding.newsdrawersubmission1androiddicodingexpert.presentation.ui.detail.DetailActivity
 import dagger.hilt.android.EntryPointAccessors
@@ -52,7 +50,7 @@ class FavoriteFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         setupRecyclerView()
         observeViewModel()

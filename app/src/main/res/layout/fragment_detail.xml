@@ -13,41 +13,39 @@
             android:id="@+id/imgNewsDetail"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:contentDescription="News Image" />
+            android:contentDescription="@string/news_image"
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/tvTitleDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:text="@string/news_title"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="Title" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvSourceDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#757575"
             android:layout_marginTop="8dp"
-            android:text="Source" />
+            android:text="@string/news_source"
+            android:textColor="#757575"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tvDescriptionDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
             android:layout_marginTop="8dp"
-            android:text="Description" />
+            android:text="@string/news_description"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnAddFavorite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tambahkan ke Favorit" />
-
-
+            android:text="@string/tambahkan_ke_favorit" />
     </LinearLayout>
 </ScrollView>

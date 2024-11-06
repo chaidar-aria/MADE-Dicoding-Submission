@@ -17,12 +17,6 @@ class DetailViewModel @Inject constructor(
     private val _isFavorite = MutableLiveData<Boolean>()
     val isFavorite: LiveData<Boolean> get() = _isFavorite
 
-    fun saveArticleToFavorites(article: com.chaidar.dicoding.core.domain.model.Article) {
-        viewModelScope.launch {
-            newsUseCases.saveArticleToFavorites(article)
-        }
-    }
-
     fun checkIfFavorite(articleId: String) {
         viewModelScope.launch {
             val favoriteArticles = newsUseCases.getFavoriteArticles().first()
