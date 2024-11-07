@@ -4,6 +4,7 @@ plugins {
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
     id("kotlin-parcelize")
+    id("com.google.devtools.ksp")
 }
 android {
     namespace = "com.chaidar.dicoding.favorite"
@@ -37,7 +38,7 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.navigation.fragment)
-    kapt(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
 
 
     implementation(libs.androidx.core.ktx)

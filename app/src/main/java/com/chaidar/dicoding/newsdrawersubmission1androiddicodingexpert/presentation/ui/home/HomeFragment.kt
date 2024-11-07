@@ -35,12 +35,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        newsAdapter = NewsAdapter(emptyList()) { article ->
+        newsAdapter = NewsAdapter { article ->
             val bundle = Bundle().apply {
                 putParcelable("article", article)
             }
             findNavController().navigate(R.id.nav_detail, bundle)
         }
+
         binding.recyclerViewNews.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = newsAdapter
@@ -49,8 +50,9 @@ class HomeFragment : Fragment() {
 
     private fun observeViewModel() {
         homeViewModel.newsList.observe(viewLifecycleOwner) { articles ->
-            newsAdapter.updateData(articles)
+            newsAdapter.submitList(articles)
         }
+
     }
 
     override fun onDestroyView() {

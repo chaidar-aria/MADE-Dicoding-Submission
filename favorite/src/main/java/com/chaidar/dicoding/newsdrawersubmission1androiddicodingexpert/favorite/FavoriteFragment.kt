@@ -58,9 +58,10 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        newsAdapter = NewsAdapter(emptyList()) { article ->
+        newsAdapter = NewsAdapter { article ->
             openDetailActivity(article)
         }
+
         binding.recyclerViewFavorite.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = newsAdapter
@@ -76,7 +77,7 @@ class FavoriteFragment : Fragment() {
 
     private fun observeViewModel() {
         favoriteViewModel.favoriteArticles.observe(viewLifecycleOwner) { articles ->
-            newsAdapter.updateData(articles)
+            newsAdapter.submitList(articles)
         }
     }
 

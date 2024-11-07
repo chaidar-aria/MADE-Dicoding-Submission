@@ -3,6 +3,8 @@ package com.chaidar.dicoding.newsdrawersubmission1androiddicodingexpert.presenta
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.chaidar.dicoding.core.R
@@ -11,9 +13,8 @@ import com.chaidar.dicoding.core.domain.model.Article
 import com.chaidar.dicoding.newsdrawersubmission1androiddicodingexpert.presentation.ui.detail.DetailActivity
 
 class NewsAdapter(
-    private var articles: List<Article>,
     private val onClick: (Article) -> Unit
-) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+) : ListAdapter<Article, NewsAdapter.NewsViewHolder>(ArticleDiffCallback()) {
 
     inner class NewsViewHolder(private val binding: NewsItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -44,13 +45,16 @@ class NewsAdapter(
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        holder.bind(articles[position])
+        holder.bind(getItem(position))
     }
 
-    override fun getItemCount(): Int = articles.size
+    class ArticleDiffCallback : DiffUtil.ItemCallback<Article>() {
+        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
+            return oldItem.id == newItem.id
+        }
 
-    fun updateData(newArticles: List<Article>) {
-        articles = newArticles
-        notifyDataSetChanged()
+        override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
+            return oldItem == newItem
+        }
     }
 }
